@@ -3,7 +3,9 @@ import requests
 import os
 import json
 
-BASE_URL = 'http://' + os.getenv("APPLICATION_HOST", "0.0.0.0") + ':' + os.getenv("APPLICATION_PORT", "5000")
+BASE_URL = 'http://'
+BASE_URL += os.getenv("APPLICATION_HOST", "0.0.0.0")
+BASE_URL += ':' + os.getenv("APPLICATION_PORT", "5000")
 API_GET = BASE_URL + '/api/top/'
 API_POST = BASE_URL + '/api/film/'
 
@@ -52,7 +54,11 @@ for index in range(0, len(films)):
         'rating': ratings[index],
     }
 
-    r = requests.post(API_POST, data=json.dumps(result), headers={'content-type': 'application/json'})
+    r = requests.post(
+        API_POST,
+        data=json.dumps(result),
+        headers={'content-type': 'application/json'}
+    )
     if r.status_code != 200:
         print('ERROR: ' + r.status_code)
         print(r.text)
