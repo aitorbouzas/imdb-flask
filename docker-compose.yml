@@ -1,0 +1,42 @@
+version: "2"
+
+services:
+  server:
+    env_file:
+      - .env
+    image: python:3.7
+    working_dir: /imdb
+    volumes:
+      - .:/imdb
+    depends_on:
+      - postgres
+    ports:
+      - 5000:5000
+    command: python src/server.py
+
+  dbdata:
+    image: busybox
+    volumes:
+      - /var/lib/postgresql/data
+  postgres:
+    image: postgres:9.4
+    volumes_from:
+      - dbdata
+
+  testserver:
+    env_file: .env
+    image: python:3.7
+    working_dir: /imdb
+    volumes:
+      - .:/imdb
+    depends_on:
+      - testpostgres
+    environment:
+      APPLICATION_PORT: 54320
+      APPLICATION_DB_CONTAINER: testpostgres
+    ports:
+      - 54320:54320
+    command: python -m pytest test/
+
+  testpostgres:
+    image: postgres:9.4
