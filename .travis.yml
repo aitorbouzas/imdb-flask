@@ -4,13 +4,14 @@ python:
   - "3.6"
 services:
   - docker
-before_install:
+install:
   - make server.install
   - make database.init
   - make database.migrate
-install:
-  - make server.d
-  - make server.stop
 script:
   - make server.test
   - make server.flake8
+after_success:
+  - make server.d
+  - pip install bs4 requests
+  - python scrap/scrap.py
