@@ -25,7 +25,3 @@ database.upgrade:
 	docker-compose run --rm server python src/manage.py db upgrade
 database.downgrade:
 	docker-compose run --rm server python src/manage.py db downgrade
-
-# SCRAP
-scrap.scrap:
-	docker-compose run --rm server python scrap/scrap.py
