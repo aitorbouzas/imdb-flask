@@ -36,7 +36,7 @@ services:
       APPLICATION_DB_CONTAINER: testpostgres
     ports:
       - 54320:54320
-    command: python -m pytest test/
+    command: ["./wait-for-it.sh", "testpostgres:5432", "--", "python", "-m", "pytest", "test/"]
 
   testpostgres:
     image: postgres:9.4
