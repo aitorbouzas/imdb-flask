@@ -12,7 +12,7 @@ server.logs:
 server.test:
 	docker-compose run --rm testserver
 server.flake8:
-	docker-compose run --rm server bash -c "python -m flake8 ./src ./test"
+	docker-compose run --rm server bash -c "python -m flake8 ./src ./test ./scrap"
 
 # DATABASE
 database.connect:
@@ -25,3 +25,7 @@ database.upgrade:
 	docker-compose run --rm server python src/manage.py db upgrade
 database.downgrade:
 	docker-compose run --rm server python src/manage.py db downgrade
+
+# SCRAP
+scrap.scrap:
+	docker-compose run --rm server python scrap/scrap.py

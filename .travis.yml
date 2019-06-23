@@ -8,9 +8,7 @@ before_install:
   - make server.install
   - make database.init
   - make database.migrate
-install:
-  - make server.d
-  - make server.stop
+  - make scrap.scrap
 script:
   - make server.test
   - make server.flake8
