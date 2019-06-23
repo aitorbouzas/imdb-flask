@@ -15,6 +15,7 @@ for film in films.get('films'):
     requests.delete(API_POST + str(film.get('id')))
 
 # Get IMDB films
+
 url = 'http://www.imdb.com/chart/top'
 response = requests.get(url)
 

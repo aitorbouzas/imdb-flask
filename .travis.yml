@@ -8,7 +8,10 @@ install:
   - make server.install
   - make database.init
   - make database.migrate
-  - python scrap/scrap.py
 script:
   - make server.test
   - make server.flake8
+after_success:
+  - make server.d
+  - pip install bs4 requests
+  - python scrap/scrap.py
