@@ -1,4 +1,4 @@
-from models import Film
+from models import Film, db
 from ast import literal_eval
 
 
@@ -33,3 +33,9 @@ class FilmRepository:
         )
 
         return film.save()
+
+    @staticmethod
+    def delete(id):
+        Film.query.filter_by(id=id).delete()
+        db.session.commit()
+        return True

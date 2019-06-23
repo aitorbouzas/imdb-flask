@@ -92,3 +92,10 @@ class FilmResource(Resource):
         fr = FilmRepository()
         film = fr.update(id, vals)
         return jsonify({"film": film.json})
+
+    @staticmethod
+    @swag_from("../sw/film/DELETE.yml")
+    def delete(id):
+        fr = FilmRepository()
+        fr.delete(id)
+        return jsonify({"message": "Deleted succesfully"})

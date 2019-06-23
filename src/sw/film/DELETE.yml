@@ -1,0 +1,13 @@
+tags:
+  - film
+parameters:
+  - id: id
+    in: path
+    type: string
+    description: The id of the film
+responses:
+  200:
+    description: Film's information was succesfully deleted
+    schema:
+      example:
+        message: Deleted succesfully
