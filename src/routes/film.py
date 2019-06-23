@@ -1,6 +1,3 @@
-"""
-Defines the blueprint for the users
-"""
 from flask import Blueprint
 from flask_restful import Api
 
