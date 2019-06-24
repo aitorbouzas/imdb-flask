@@ -8,6 +8,7 @@ install:
   - make server.install
   - make database.init
   - make database.migrate
+  - make database.upgrade
 script:
   - make server.test
   - make server.flake8

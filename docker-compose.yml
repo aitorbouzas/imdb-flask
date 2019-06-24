@@ -1,6 +1,18 @@
 version: "2"
 
 services:
+  web:
+    build: ./web
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    depends_on:
+      - server
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+
   server:
     env_file:
       - .env

@@ -47,7 +47,7 @@ for index in range(0, len(films)):
 
     result = {
         'name': films[index][pos_len+1:-7],
-        'pos': films[index][0:pos_len],
+        'pos': films[index][0:pos_len+1],
         'year': films[index][-6:].replace('(', '').replace(')', ''),
         'url': urls[index],
         'image': images[index],
