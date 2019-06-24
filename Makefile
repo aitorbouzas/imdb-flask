@@ -14,6 +14,12 @@ server.test:
 server.flake8:
 	docker-compose run --rm server bash -c "python -m flake8 ./src ./test ./scrap"
 
+# FRONTEND
+web.d:
+	docker-compose -d up web
+web.start:
+	docker-compose up web
+
 # DATABASE
 database.connect:
 	docker-compose exec postgres psql -Upostgres
