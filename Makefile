@@ -15,8 +15,10 @@ server.flake8:
 	docker-compose run --rm server bash -c "python -m flake8 ./src ./test ./scrap"
 
 # FRONTEND
+web.build:
+	docker-compose build web
 web.d:
-	docker-compose -d up web
+	docker-compose up -d web
 web.start:
 	docker-compose up web
 
